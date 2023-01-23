@@ -8,6 +8,7 @@ import { ListComponent } from './component/list/list.component';
 import { CardComponent } from './component/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { StoreModule } from '@ngrx/store';
 import { listReducer } from './component/store/reducers';
 
@@ -16,7 +17,7 @@ import { listReducer } from './component/store/reducers';
   declarations: [
     AppComponent,
     ListComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +25,7 @@ import { listReducer } from './component/store/reducers';
     BrowserAnimationsModule,
     HttpClientModule,
     MatCardModule,
+    MatGridListModule,
     StoreModule.forRoot({list: listReducer}),
   ],
   providers: [],
