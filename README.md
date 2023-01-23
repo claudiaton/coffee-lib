@@ -25,3 +25,37 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Run application
+ng serve --open
+
+## Create component
+ng g component component/list --dry-run
+
+## Create service
+ng g service service/data/data
+Create a function inside the service (after the constructor) and return something
+Create a constructor inside the class of the component and declare a private variable having the same service type `constructor (private list: DataService) {}`
+
+## Http request
+In app.module file, import `import { HttpClientModule } from '@angular/common/http';` and include in imports `HttpClientModule`
+
+## REQUIREMENTS
+Data should be managed via the NgRx Store
+HTTP requests should be dispatched via NgRx Effects
+The layout should be responsive and have mobile and desktop breakpoints
+unit tests
+presentable styles
+
+Create a Product List Page
+Retrieve a list of 50 coffees https://random-data-api.com/api/coffee/random_coffee?size=50
+Implement pagination, with a limit of 10 items per page
+
+## BONUS
+- leverage NgRx Selectors for retrieving data from the Store
+- Leverage OnPush ChangeDetection for each of your components
+- Add a product details page
+
+## List of components
+List
+Card
