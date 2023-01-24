@@ -59,3 +59,13 @@ Implement pagination, with a limit of 10 items per page
 ## List of components
 List
 Card
+
+## Enabling store
+
+## Enabling redux dev tools
+ng add @ngrx/store-devtools
+
+## Helpful tutorials
+https://therichpost.com/angular-15-ngrx-counter-working-example/
+
+https://medium.com/bb-tutorials-and-thoughts/using-ngrx-effects-to-make-api-calls-in-angular-apps-7b5db74f505b

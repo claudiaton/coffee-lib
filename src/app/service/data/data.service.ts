@@ -12,10 +12,4 @@ export class DataService {
     return this.fetchData.get(this.url);
   }
 
-//   getList() {
-//     return [
-//       "Coffee", "Tea", "Soft drink"
-//     ]
-// }
-
 }

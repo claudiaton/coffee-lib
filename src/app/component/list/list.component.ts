@@ -1,9 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/service/data/data.service';
-import { getItems } from '../store/actions';
-import { Store } from '@ngrx/store';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { getItems } from '../../store/actions';
+import { select, Store } from '@ngrx/store';
+import { ICoffee } from '../../interfaces/ICoffee';
 
 @Component({
   selector: 'app-list',
@@ -14,29 +14,19 @@ export class ListComponent implements OnInit {
 
   public getScreenWidth: any;
   public columns: number = 2;
+  public myList$: Observable<Array<ICoffee>>;
 
   checkWindowWidth() {
     this.getScreenWidth = window.innerWidth;
     if (this.getScreenWidth <= 900) {
-      this.columns = 1
+      this.columns = 1;
     }
     else if (this.getScreenWidth > 900) {
-      this.columns = 2
+      this.columns = 2;
     }
   }
-  constructor(private list: DataService, breakpointObserver: BreakpointObserver) {
-    // breakpointObserver.observe([
-    //   Breakpoints.XSmall,
-    //   Breakpoints.Small
-    // ]).subscribe(result => {
-    //   if (result.matches) {
-    //     listCols=1;
-    //   }
-    //   else {
-    //     listCols=2
-    //   }
-    // });
-
+  constructor(private list: DataService, private store: Store<{ list: Array<ICoffee> }>) {
+    this.myList$ = store.select('list');
   }
   ngOnInit() {
     this.checkWindowWidth();
@@ -54,23 +44,3 @@ export class ListComponent implements OnInit {
     this.checkWindowWidth();
   }
 }
-// export class ListComponent {
-//   list$: Observable<Array<string> >;
-//   constructor(private store: Store<{ list: Array<string> }>) {
-//     this.list$ = store.select('list');
-//   }
-//   //Implement the methods by dispatching actions to the store.
-//   getItems() {
-//     this.store.dispatch(getItems());
-//     this.coffees = this.list$
-//   }
-//   coffees:any;
-// }
-
-// export class ListComponent implements OnInit{
-// constructor (private store: Store<{ list: Array<string> }>) {}
-// ngOnInit() {
-//     this.coffees = this.store.dispatch(getItems())
-//   }
-//   coffees:any;
-// }
