@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-details',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['details.component.scss']
 })
 export class DetailsComponent {
-
+  constructor(
+    public dialogRef: MatDialogRef<DetailsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 }

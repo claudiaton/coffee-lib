@@ -19,7 +19,8 @@ export class CoffeeEffects {
       ofType(coffeeActions.getItems),
       exhaustMap(action =>
         this.dataService.fetchList().pipe(
-          map(response => coffeeActions.loadSuccess(response)),
+          map(response => {
+            return coffeeActions.loadSuccess(response)}),
           catchError((error: any) => of(coffeeActions.loadFailure(error))))
       )
     )

@@ -2,8 +2,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/service/data/data.service';
 import { getItems } from '../../store/actions';
-import { select, Store } from '@ngrx/store';
-import { ICoffee } from '../../interfaces/ICoffee';
+import { createSelector, select, Store } from '@ngrx/store';
+import { ICoffee} from '../../interfaces/ICoffee';
+import { LibState } from '../../interfaces/LibState';
+import { getList } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +16,8 @@ export class ListComponent implements OnInit {
 
   public getScreenWidth: any;
   public columns: number = 2;
-  public myList$: Observable<Array<ICoffee>>;
+  myList$: Observable<Array<ICoffee>>;
+  currentPage$: Observable<Number>;
 
   checkWindowWidth() {
     this.getScreenWidth = window.innerWidth;
@@ -25,11 +28,22 @@ export class ListComponent implements OnInit {
       this.columns = 2;
     }
   }
-  constructor(private list: DataService, private store: Store<{ list: Array<ICoffee> }>) {
-    this.myList$ = store.select('list');
+  coffees: any;
+  
+  constructor(private list: DataService, private store: Store<LibState>) {
+    this.myList$ = this.store.pipe(select(getList));
+    this.currentPage$ = this.store.select('currentPage');
   }
+
+  // ngOnChange() {
+  //   this.coffees = this.myList$
+  // }
+
   ngOnInit() {
     this.checkWindowWidth();
+
+    this.myList$ = this.store.pipe(select(getList));
+    this.currentPage$ = this.store.select('currentPage');
 
     this.list.fetchList().subscribe(
       (response) => {
@@ -37,7 +51,6 @@ export class ListComponent implements OnInit {
       }
     )
   }
-  coffees: any;
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {

@@ -8,17 +8,24 @@ import { MatDialog } from '@angular/material/dialog';
 export class CardComponent {
   @Input()
   coffee: any = {};
-
+  
   title = this.coffee.blend_name;
-  subtitle = "Coffee Variety";
-  content = "Coffee notes";
-  details = ["Coffee Origin", "Coffee intensifier"]
+  subtitle = this.coffee.variety;
+  // content = this.coffee.notes.slice(",")
+  content = "coffee notes"
+  details = [this.coffee.origin, this.coffee.intensifier]
 
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog() {
-    this.dialog.open(DetailsDialog);
+  openDialog(uid:string) {
+    this.dialog.open(DetailsDialog, {
+      width: '400px',
+      data: {
+        origin: this.coffee.origin,
+        intensifier: this.coffee.intensifier
+      }
+    });
   }
 }
 

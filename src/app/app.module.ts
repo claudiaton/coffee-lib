@@ -17,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { CoffeeEffects } from './store/effects';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { DetailsComponent } from './component/details/details.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     AppComponent,
     ListComponent,
     CardComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     MatButtonModule,
     MatPaginatorModule,
     MatDialogModule,
-    StoreModule.forRoot({list: listReducer}),
+    StoreModule.forRoot({coffeeLib: listReducer}),
     EffectsModule.forRoot([CoffeeEffects]),
     StoreDevtoolsModule.instrument({ name:"Coffee Lib", maxAge: 25, logOnly: !isDevMode() }),
   ],

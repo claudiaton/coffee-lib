@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { ICoffee, LibState } from '../interfaces/ICoffee';
+import { ICoffee} from '../interfaces/ICoffee';
+import { LibState } from '../interfaces/LibState';
 import { getItems, loadSuccess, loadFailure } from './actions';
 
 //export const initialState:Array<ICoffee> = [];
@@ -18,7 +19,10 @@ export const initialState:LibState = {
 export const listReducer = createReducer(
   initialState,
   on(getItems, (state) => ({...state, isLoading: true})),
-  on(loadSuccess, (state)=> ({...state, isLoading: false, isLoadingSuccess: true})),
+  on(loadSuccess, (state, result)=> 
+  {
+    console.log(typeof result, Array.isArray(result))
+    return  ({...state, list:Object.values(result), isLoading: false, isLoadingSuccess: true})}),
 );
 
 export function reducer(state: LibState | undefined, action: Action): any {

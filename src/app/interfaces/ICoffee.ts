@@ -9,12 +9,3 @@ export interface ICoffee {
         intensifier: string
     }
 }
-
-export interface LibState {
-    list: Array<ICoffee>,
-    currentItem: string,
-    currentPage: number,
-    isLoading: boolean,
-    isLoadingSuccess: boolean,
-    isLoadingFailure: boolean
-}
