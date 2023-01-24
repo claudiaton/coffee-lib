@@ -69,7 +69,3 @@ ng add @ngrx/store-devtools
 https://therichpost.com/angular-15-ngrx-counter-working-example/
 
 https://medium.com/bb-tutorials-and-thoughts/using-ngrx-effects-to-make-api-calls-in-angular-apps-7b5db74f505b
-
-
-{type: '[List] Get'}
-Object.values(response)

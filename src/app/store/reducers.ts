@@ -3,18 +3,12 @@ import { ICoffee} from '../interfaces/ICoffee';
 import { LibState } from '../interfaces/LibState';
 import { getItems, loadSuccess, loadFailure } from './actions';
 
-//export const initialState:Array<ICoffee> = [];
 export const initialState:LibState = {
   list: [],
-  currentItem: "none",
-  currentPage: 0,
   isLoading: false,
   isLoadingSuccess: false,
   isLoadingFailure: false
 };
-
-//Creates a reducer function to handle state transitions.
-//Reducer creators reduce the explicitness of reducer functions with switch statements.
 
 export const listReducer = createReducer(
   initialState,

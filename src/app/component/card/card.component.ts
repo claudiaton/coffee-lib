@@ -23,6 +23,7 @@ export class CardComponent {
     this.dialog.open(DetailsDialog, {
       width: '400px',
       data: {
+        name: this.coffee.blend_name,
         origin: this.coffee.origin,
         intensifier: this.coffee.intensifier
       }

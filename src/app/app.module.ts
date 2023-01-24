@@ -17,7 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { CoffeeEffects } from './store/effects';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { DetailsComponent } from './component/details/details.component';
+// import { DetailsComponent } from './component/details/details.component';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import { DetailsComponent } from './component/details/details.component';
     AppComponent,
     ListComponent,
     CardComponent,
-    DetailsComponent
+    // DetailsComponent,
+    DetailsDialog
   ],
   imports: [
     BrowserModule,

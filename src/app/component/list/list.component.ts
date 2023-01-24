@@ -14,14 +14,15 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-onPaginate($event: PageEvent) {
-throw new Error('Method not implemented.');
+
+  onPaginate(pageEvent: PageEvent) {
+    this.recordsToShow = this.coffees.slice((pageEvent.pageIndex+1)*10-10,(pageEvent.pageIndex+1)*10)
 }
 
   public getScreenWidth: any;
   public columns: number = 2;
   myList$: Observable<Array<ICoffee>>;
-  currentPage$: Observable<Number>;
+recordsToShow: Array<any> = [];
 
   checkWindowWidth() {
     this.getScreenWidth = window.innerWidth;
@@ -36,24 +37,19 @@ throw new Error('Method not implemented.');
 
   constructor(private list: DataService, private store: Store<LibState>) {
     this.myList$ = this.store.pipe(select(getList));
-    this.currentPage$ = this.store.select('currentPage');
   }
-
-  // ngOnChange() {
-  //   this.coffees = this.myList$
-  // }
 
   ngOnInit() {
     this.checkWindowWidth();
 
     this.myList$ = this.store.pipe(select(getList));
-    this.currentPage$ = this.store.select('currentPage');
 
 this.store.dispatch(getItems())
 
     this.myList$.subscribe(
       (response) => {
         this.coffees = response;
+        this.recordsToShow = this.coffees.slice(0,10)
       }
     )
   }

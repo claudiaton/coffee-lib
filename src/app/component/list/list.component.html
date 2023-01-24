@@ -1,13 +1,14 @@
 <!-- <p *ngFor="let coffee of coffees">{{coffee.blend_name}}</p> -->
-<mat-grid-list cols={{this.columns}} rowHeight="3:1">
-    <mat-grid-tile *ngFor="let item of coffees">
-        <app-card [coffee]="item"></app-card>
-    </mat-grid-tile>
-</mat-grid-list>
 <mat-paginator [length]="50"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 100]"
               (page) = "onPaginate($event)"
               aria-label="Select page">
 </mat-paginator>
+<mat-grid-list cols={{this.columns}} rowHeight="3:1">
+    <mat-grid-tile *ngFor="let item of recordsToShow">
+        <app-card [coffee]="item"></app-card>
+    </mat-grid-tile>
+</mat-grid-list>
+
 <!-- {{myList$ | async}} -->
