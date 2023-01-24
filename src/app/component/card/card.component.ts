@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -18,7 +19,7 @@ export class CardComponent {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog(uid:string) {
+  openDialog() {
     this.dialog.open(DetailsDialog, {
       width: '400px',
       data: {
@@ -32,6 +33,10 @@ export class CardComponent {
 @Component({
   selector: 'app-details',
   templateUrl: '../details/details.component.html',
-  styleUrls: ['../details/details.component.scss']
+  // styleUrls: ['../details/details.component.scss']
 })
-export class DetailsDialog { }
+export class DetailsDialog { 
+  constructor(
+    // public dialogRef: MatDialogRef<DetailsDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+}

@@ -20,7 +20,7 @@ export class CoffeeEffects {
       exhaustMap(action =>
         this.dataService.fetchList().pipe(
           map(response => {
-            return coffeeActions.loadSuccess(response)}),
+            return coffeeActions.loadSuccess({coffeeList: response})}),
           catchError((error: any) => of(coffeeActions.loadFailure(error))))
       )
     )

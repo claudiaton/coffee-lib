@@ -19,10 +19,9 @@ export const initialState:LibState = {
 export const listReducer = createReducer(
   initialState,
   on(getItems, (state) => ({...state, isLoading: true})),
-  on(loadSuccess, (state, result)=> 
+  on(loadSuccess, (state, response)=> 
   {
-    console.log(typeof result, Array.isArray(result))
-    return  ({...state, list:Object.values(result), isLoading: false, isLoadingSuccess: true})}),
+    return  ({...state, list:response.coffeeList, isLoading: false, isLoadingSuccess: true})}),
 );
 
 export function reducer(state: LibState | undefined, action: Action): any {
