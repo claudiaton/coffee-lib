@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CardComponent } from './card.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { AppComponent } from 'src/app/app.component';
+import { ListComponent } from '../list/list.component';
+import { CardComponent, DetailsDialog } from './card.component';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -8,7 +13,26 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
+      declarations: [ 
+        AppComponent,
+        ListComponent,
+        CardComponent, 
+    ],
+
+    imports: [
+      MatCardModule,
+      MatButtonModule,
+      MatDialogModule,
+      MatChipsModule,
+    ],
+    providers: [
+      {
+        provide: MatDialogRef,
+        useValue: {}
+      },
+      DetailsDialog
+   ],
+
     })
     .compileComponents();
 
@@ -22,7 +46,7 @@ describe('CardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as 2nd title 'Variety'`, () => {
+  it('should have as 2nd title "Variety"', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('button')).toBeDefined;
     });

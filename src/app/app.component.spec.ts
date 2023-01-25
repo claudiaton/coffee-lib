@@ -1,16 +1,30 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
+import { ListComponent } from './component/list/list.component';
+import { listReducer } from './store/reducers';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
       declarations: [
-        AppComponent
+        AppComponent,
+        ListComponent,
       ],
+      
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatGridListModule,
+        MatPaginatorModule,
+        StoreModule.forRoot({coffeeLib: listReducer}),
+      ],
+      providers: [
+     ],
     }).compileComponents();
   });
 
@@ -30,6 +44,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('coffee-lib app is running!');
+    expect(compiled.querySelector('h2')?.textContent).toContain('you will find');
   });
 });
