@@ -29,7 +29,7 @@ Current item and pagination are pieces of data that are not currently in scope a
 Planned screen size vary from 370 to 1600px
 
 ## Tests
-Tests were written partially, only for demo purpose
+Tests are a work in progress, they are enabled and started with card component.
 
 
 ### APPLICATION
