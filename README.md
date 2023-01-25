@@ -1,3 +1,38 @@
+### ASSIGNMENT
+## REQUIREMENTS
+Data should be managed via the NgRx Store
+HTTP requests should be dispatched via NgRx Effects
+The layout should be responsive and have mobile and desktop breakpoints
+unit tests
+presentable styles
+
+Create a Product List Page
+Retrieve a list of 50 coffees https://random-data-api.com/api/coffee/random_coffee?size=50
+Implement pagination, with a limit of 10 items per page
+
+## BONUS
+- leverage NgRx Selectors for retrieving data from the Store
+- Leverage OnPush ChangeDetection for each of your components
+- Add a product details page
+
+## PLANS
+## List of components
+List
+Card
+Details
+
+## State
+Data fetched from the API (an array of items) will be managed as state (for demo purpose or for later more complex development).
+Current item and pagination are pieces of data that are not currently in scope as state.
+
+## Screen responsiveness
+Planned screen size vary from 370 to 1600px
+
+## Tests
+Tests were written partially, only for demo purpose
+
+
+### APPLICATION
 # CoffeeLib
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
@@ -26,6 +61,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## DEV USEFUL COMMANDS
 ## Run application
 ng serve --open
 
@@ -39,29 +75,6 @@ Create a constructor inside the class of the component and declare a private var
 
 ## Http request
 In app.module file, import `import { HttpClientModule } from '@angular/common/http';` and include in imports `HttpClientModule`
-
-## REQUIREMENTS
-Data should be managed via the NgRx Store
-HTTP requests should be dispatched via NgRx Effects
-The layout should be responsive and have mobile and desktop breakpoints
-unit tests
-presentable styles
-
-Create a Product List Page
-Retrieve a list of 50 coffees https://random-data-api.com/api/coffee/random_coffee?size=50
-Implement pagination, with a limit of 10 items per page
-
-## BONUS
-- leverage NgRx Selectors for retrieving data from the Store
-- Leverage OnPush ChangeDetection for each of your components
-- Add a product details page
-
-## List of components
-List
-Card
-
-## Enabling store
-
 ## Enabling redux dev tools
 ng add @ngrx/store-devtools
 
@@ -69,3 +82,4 @@ ng add @ngrx/store-devtools
 https://therichpost.com/angular-15-ngrx-counter-working-example/
 
 https://medium.com/bb-tutorials-and-thoughts/using-ngrx-effects-to-make-api-calls-in-angular-apps-7b5db74f505b
+

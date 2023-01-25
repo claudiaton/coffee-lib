@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
 
   public getScreenWidth: any;
   public columns: number = 2;
-  myList$: Observable<Array<ICoffee>>;
+  itemList$: Observable<Array<ICoffee>>;
 recordsToShow: Array<any> = [];
 
   checkWindowWidth() {
@@ -36,17 +36,17 @@ recordsToShow: Array<any> = [];
   coffees: any;
 
   constructor(private list: DataService, private store: Store<LibState>) {
-    this.myList$ = this.store.pipe(select(getList));
+    this.itemList$ = this.store.pipe(select(getList));
   }
 
   ngOnInit() {
     this.checkWindowWidth();
 
-    this.myList$ = this.store.pipe(select(getList));
+    this.itemList$ = this.store.pipe(select(getList));
 
 this.store.dispatch(getItems())
 
-    this.myList$.subscribe(
+    this.itemList$.subscribe(
       (response) => {
         this.coffees = response;
         this.recordsToShow = this.coffees.slice(0,10)

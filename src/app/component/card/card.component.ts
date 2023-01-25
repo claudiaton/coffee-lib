@@ -1,6 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SplitPipe } from 'src/app/pipes/split.pipe';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -9,13 +10,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class CardComponent {
   @Input()
   coffee: any = {};
-  
-  title = this.coffee.blend_name;
-  subtitle = this.coffee.variety;
-  // content = this.coffee.notes.slice(",")
-  content = "coffee notes"
+  @Input()
+  coffeeNotes: Array<string> = [];
+  // title = this.coffee.blend_name;
+  // subtitle = this.coffee.variety;
   details = [this.coffee.origin, this.coffee.intensifier]
-
+  // this.coffee.notes && notesArray = this.coffee.notes.split(", ")
 
   constructor(public dialog: MatDialog) { }
 
@@ -24,8 +24,10 @@ export class CardComponent {
       width: '400px',
       data: {
         name: this.coffee.blend_name,
+        variety: this.coffee.variety,
+        notes: this.coffee.notes,
         origin: this.coffee.origin,
-        intensifier: this.coffee.intensifier
+        intensifier: this.coffee.intensifier,
       }
     });
   }

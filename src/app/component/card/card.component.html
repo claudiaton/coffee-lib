@@ -1,9 +1,13 @@
 <mat-card class="item-card">
   <mat-card-header>
     <mat-card-title>{{coffee.blend_name}}</mat-card-title>
-    <mat-card-subtitle>{{coffee.variety}}</mat-card-subtitle>
+    <mat-card-subtitle>Variety {{coffee.variety}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>{{coffee.notes}}
+  <mat-card-content >
+    <mat-chip-listbox aria-label="Coffee Notes">
+      <!-- <mat-chip-option> {{coffee.notes | split:", "}} </mat-chip-option>  -->
+      <mat-chip-option *ngFor="let n of coffeeNotes" selectable="false">{{n}}</mat-chip-option>
+    </mat-chip-listbox>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="openDialog()">Details</button>
